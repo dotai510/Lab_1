@@ -31,29 +31,45 @@ public class MyArray {
 
 		return mirrorArray;
 	}
-
+		
+	
 	public int[] removeDuplicate() {
+		//copy original array into new array
 		int[] arr = this.array;
+		//get the length of the array
 		int n = arr.length;
+		//creates a boolean array with false elements
 		boolean[] isDuplicated = new boolean[n];
+		//variable to store the new size of the array after mathcing
 		int newSize = 0;
+		
+		// the first loop checks for duplicated elements
 		for (int i = 0; i < n; i++) {
 			if (!isDuplicated[i]) {
+				
+				//the second loop compares the current element (arr[i]) with the elements after it
 				for (int j = i + 1; j < n; j++) {
 					if (arr[i] == arr[j]) {
+						//Mark duplicate elements by setting isDuplicated to true
 						isDuplicated[j] = true;
 					}
 				}
+				//increase the new size of the array every time a non-duplicate element is found
 				newSize++;
 			}
 		}
+		//create a new array with size newSize to store non-duplicate elements
 		int[] result = new int[newSize];
+		//index variable to keep tract=k of the current position in the result array
 		int index = 0;
+		
+		//loop to 	copy non-duplicate elements into the result array
 		for (int i = 0; i < n; i++) {
 			if (!isDuplicated[i]) {
 				result[index++] = arr[i];
 			}
 		}
+		//
 		return result;
 	}
 
